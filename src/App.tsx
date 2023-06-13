@@ -2,24 +2,18 @@ import { useState } from "react";
 import ListGroup from "./components/ListGroup";
 import Button from "./components/Button/Button";
 import Like from "./components/Like";
-
-// import Alert from "./components/Alert";
-// import Button from "./components/Button";
+import NavBar from "./components/NavBar";
+import Cart from "./components/Cart";
 
 function App() {
-  //const [alertVisible, setAlertVisibility] = useState(false);
   let items = ["New York", "San Fransico", "London", "Paris"];
+  const [cartItems, setCartItems] = useState(["Product1","Product2"])
+
 
   const handleSelectItem = (item: string) => {
     console.log(item);
   };
 
-  //old div <ListGroup items={items} heading="Cities" onSelectItem={handleSelectItem}/>
-
-  // {alertVisible && (
-  //   <Alert onClose={() => setAlertVisibility(false)}>My Alert</Alert>
-  // )}
-  // <Button onClick={() => setAlertVisibility(true)}>Test Button</Button>
   return (
     <div>
       <ListGroup
@@ -29,6 +23,8 @@ function App() {
       />
       <Button onClick={() => {}} color="primary">My Button</Button>
       <Like onClick={() => console.log("clicked!")}/>
+      <NavBar cartItemsCount={cartItems.length}/>
+      <Cart cartItems={cartItems} onClear={() => setCartItems([])}/>
     </div>
   );
 }
