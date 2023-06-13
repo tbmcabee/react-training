@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ListGroup from "./components/ListGroup";
 import Button from "./components/Button/Button";
+import Like from "./components/Like";
 
 // import Alert from "./components/Alert";
 // import Button from "./components/Button";
@@ -26,7 +27,8 @@ function App() {
         heading="Cities"
         onSelectItem={handleSelectItem}
       />
-      <Button onClick={() => {}}>My Button</Button>
+      <Button onClick={() => {}} color="primary">My Button</Button>
+      <Like onClick={() => console.log("clicked!")}/>
     </div>
   );
 }
