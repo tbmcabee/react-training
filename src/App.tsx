@@ -5,11 +5,15 @@ import Like from "./components/Like";
 import NavBar from "./components/NavBar";
 import Cart from "./components/Cart";
 import { produce } from "immer";
-import GameList from "./components/GameList";
 
 function App() {
   let items = ["New York", "San Fransico", "London", "Paris"];
-  const [cartItems, setCartItems] = useState(["Product1","Product2"])
+
+  const [cart, setCart] = useState({
+    discount: .1, 
+    items: [{id: 1, title: 'Product 1', quantity: 1},
+    {id: 2, title: 'Product 2', quantity: 1}
+    ]});
 
   const [game, setGame] = useState({
     id: 1,
@@ -18,17 +22,36 @@ function App() {
     }
   });
 
+  const [pizza, setPizza] = useState({
+    name: 'Spicy Pepperoni', 
+    toppings: ['Mushroom']
+  });
+
+  const handleCartClick = () => {
+    setCart({...cart, items: 
+      [...cart.items.map(item => item.id === 1 ? 
+        {...item, quantity: item.quantity + 1} : item)
+      ]})
+  }
+
+  const handlePizzaClick = () => {
+    setPizza({...pizza, toppings: [...pizza.toppings, 'Cheese']});
+  }
+
   const handleClick = () => {
     console.log(game.player.name);
     setGame({
       ...game,
-      player: {...game.player, name: "N/A"}
+      player: {...game.player, name: "Bob"}
     })
   }
 
   const handleSelectItem = (item: string) => {
     console.log(item);
   };
+
+  // <NavBar cartItemsCount={cartItems.length}/>
+  //     <Cart cartItems={cartItems} onClear={() => setCartItems([])}/>
 
   return (
     <div>
@@ -39,10 +62,9 @@ function App() {
       />
       <Button onClick={() => {}} color="primary">My Button</Button>
       <Like onClick={() => console.log("clicked!")}/>
-      <NavBar cartItemsCount={cartItems.length}/>
-      <Cart cartItems={cartItems} onClear={() => setCartItems([])}/>
-      <GameList gameList={game} />
       <Button onClick={handleClick}>Clear Username</Button>
+      <Button onClick={handlePizzaClick}>Add Cheese to Pizza</Button>
+      <Button onClick={handleCartClick}>Add 1 to Product 1's Quantity</Button>
     </div>
   );
 }
