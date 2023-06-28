@@ -5,6 +5,7 @@ import Like from "./components/Like";
 import NavBar from "./components/NavBar";
 import Cart from "./components/Cart";
 import { produce } from "immer";
+import ExpandableText from "./components/ExpandableText";
 
 function App() {
   let items = ["New York", "San Fransico", "London", "Paris"];
@@ -55,16 +56,13 @@ function App() {
 
   return (
     <div>
-      <ListGroup
-        items={items}
-        heading="Cities"
-        onSelectItem={handleSelectItem}
-      />
-      <Button onClick={() => {}} color="primary">My Button</Button>
-      <Like onClick={() => console.log("clicked!")}/>
-      <Button onClick={handleClick}>Clear Username</Button>
-      <Button onClick={handlePizzaClick}>Add Cheese to Pizza</Button>
-      <Button onClick={handleCartClick}>Add 1 to Product 1's Quantity</Button>
+      <ExpandableText>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem consectetur, explicabo tempora quas animi, reprehenderit accusamus consequuntur libero aperiam porro tempore 
+        labore quaerat ipsum maxime pariatur temporibus saepe blanditiis? Dolorem voluptate dolores qui corrupti veniam aliquid fugit veritatis. 
+        Accusamus est eligendi et perspiciatis, veniam nihil! In quos, eius consequatur quaerat assumenda soluta architecto laboriosam. Delectus quas facere, 
+        aliquid natus facilis obcaecati eius accusantium enim ducimus voluptate, saepe tenetur accusamus officia nulla. Cum animi dolores quisquam doloribus, hic corrupti facilis 
+        neque quis inventore assumenda vero quos, nemo ab magnam tempore aliquam fuga corporis similique optio ipsa illo accusamus? Commodi, doloribus delectus?
+      </ExpandableText>
     </div>
   );
 }
